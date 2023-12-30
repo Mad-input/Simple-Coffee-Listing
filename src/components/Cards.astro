@@ -1,0 +1,48 @@
+---
+import CardItem from "./CardItem.astro";
+import dataCoffee from "../data/dataCoffe";
+interface Props {
+  page: Boolean;
+}
+
+const { page } = Astro.props;
+
+const newCof = dataCoffee.filter((dat) => dat.available);
+---
+
+<div class="cards">
+  {
+    !page
+      ? dataCoffee.map((dat) => (
+          <CardItem
+            name={dat.name}
+            image={dat.image}
+            price={dat.price}
+            available={dat.available}
+            popular={dat.popular}
+            votes={dat.votes}
+            rate={JSON.stringify(dat.rating)}
+          />
+        ))
+      : newCof.map((dat) => (
+          <CardItem
+            name={dat.name}
+            image={dat.image}
+            price={dat.price}
+            available={dat.available}
+            popular={dat.popular}
+            votes={dat.votes}
+            rate={JSON.stringify(dat.rating)}
+          />
+        ))
+  }
+</div>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 40px;
+  }
+</style>

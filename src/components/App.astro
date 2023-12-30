@@ -1,0 +1,100 @@
+---
+import Cards from "../components/Cards.astro";
+---
+
+<section class="app">
+  <div class="info">
+    <img src="/vector.svg" alt="coffee" />
+    <h1 class="title-hero">Our Collection</h1>
+    <p class="description">
+      Introducing our Coffee Collection, a selection of unique coffees from
+      different roast types and origins, expertly roasted in small batches and
+      shipped fresh weekly.
+    </p>
+    <nav class="nav">
+      <ul class="list">
+        <li class="list-item active"><a href="/">All Products</a></li>
+        <li class="list-item"><a href="/available">Available Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <slot />
+</section>
+
+<style>
+  .app {
+    background: #1b1d1f;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-top: -200px;
+  }
+
+  .info {
+    padding-top: 90px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  img {
+    position: absolute;
+    top: 50px;
+    right: 22%;
+  }
+
+  .title-hero,
+  .description {
+    text-align: center;
+    width: 55%;
+    z-index: 100;
+  }
+
+  .title-hero {
+    font-size: 35px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+  }
+
+  .description {
+    color: #6f757c;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .nav {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .list-item {
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  a {
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+
+  .list-item.active {
+    background: #6f757c;
+  }
+</style>

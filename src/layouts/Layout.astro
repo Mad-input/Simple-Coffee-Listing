@@ -1,4 +1,6 @@
 ---
+import App from "../components/App.astro";
+import Header from "../components/Header.astro";
 interface Props {
   title: string;
 }
@@ -17,11 +19,16 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
+
 <style is:global>
   :root {
+    --text-color: #fef7ee;
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
     --accent-dark: 49, 10, 101;
@@ -35,19 +42,19 @@ const { title } = Astro.props;
   html {
     font-family: system-ui, sans-serif;
     background-size: 224px;
+    background: #111315;
+  }
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+
+  body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
   }
 </style>
