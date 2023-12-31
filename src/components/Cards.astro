@@ -6,12 +6,13 @@ interface Props {
 }
 
 const { page } = Astro.props;
-
+// Filtrar de archivo js todos los productos que esten disponibles
 const newCof = dataCoffee.filter((dat) => dat.available);
 ---
 
 <div class="cards">
   {
+    // Renderizar todos los productos de la pgina si la prop page esta false
     !page
       ? dataCoffee.map((dat) => (
           <CardItem
@@ -24,7 +25,8 @@ const newCof = dataCoffee.filter((dat) => dat.available);
             rate={JSON.stringify(dat.rating)}
           />
         ))
-      : newCof.map((dat) => (
+      : // Renderizar solo lo productos que esten disponible en la otra pagina
+        newCof.map((dat) => (
           <CardItem
             name={dat.name}
             image={dat.image}
@@ -44,5 +46,17 @@ const newCof = dataCoffee.filter((dat) => dat.available);
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     gap: 40px;
+  }
+  /* Modo Tableta */
+  @media screen and (max-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  /* Modo Mobile */
+  @media screen and (max-width: 640px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

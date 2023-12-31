@@ -44,14 +44,24 @@ const { name, rate, price, popular, votes, available, image } = Astro.props;
 </article>
 
 <style>
+  .card {
+    cursor: pointer;
+  }
   .image {
     position: relative;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
   .image img {
-    border-radius: 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
     object-fit: cover;
+    transition: 0.3s ease all;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .image .badge {

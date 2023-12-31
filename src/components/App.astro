@@ -1,7 +1,3 @@
----
-import Cards from "../components/Cards.astro";
----
-
 <section class="app">
   <div class="info">
     <img src="/vector.svg" alt="coffee" />
@@ -13,8 +9,12 @@ import Cards from "../components/Cards.astro";
     </p>
     <nav class="nav">
       <ul class="list">
-        <li class="list-item active"><a href="/">All Products</a></li>
-        <li class="list-item"><a href="/available">Available Now</a></li>
+        <li class={`list-item active`}>
+          <a href="/" data-cat="all">All Products</a>
+        </li>
+        <li class={`list-item`}>
+          <a href="/available" data-cat="now">Available Now</a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -31,11 +31,12 @@ import Cards from "../components/Cards.astro";
     align-items: center;
     flex-direction: column;
     max-width: 1000px;
+    margin: 0 40px;
     margin-top: -200px;
   }
 
   .info {
-    padding-top: 90px;
+    padding: 90px 40px 0 40px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -66,6 +67,7 @@ import Cards from "../components/Cards.astro";
     color: #6f757c;
     font-weight: 500;
     font-size: 18px;
+    line-height: 1.4;
   }
 
   .nav {
@@ -92,9 +94,32 @@ import Cards from "../components/Cards.astro";
     text-decoration: none;
     font-weight: 500;
     color: var(--text-color);
+    white-space: nowrap;
   }
 
   .list-item.active {
     background: #6f757c;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .title-hero,
+    .description {
+      width: 90%;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .title-hero,
+    .description {
+      width: 100%;
+    }
+
+    .description {
+      font-size: 16px;
+    }
+
+    img {
+      right: 0;
+    }
   }
 </style>
